@@ -1,0 +1,165 @@
+@import "../scss/preset.scss";
+
+img {
+  border: none;
+}
+
+button {
+  background-color: $teal_color;
+  border: none;
+  font-size: clamp(1rem, 1.25rem, 1.5rem);
+  padding: 1rem 5px;
+  border-radius: 15px;
+  width: 8rem;
+  transition: 0.15s ease-in-out;
+  font-weight: bolder;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #{adjust($teal_color, 20%)};
+    outline: 1px solid #{adjust($teal_color, -20%)};
+  }
+}
+
+.attachment-selection {
+  margin: 2rem;
+  padding-bottom: 20px;
+
+  h2 {
+    font-size: clamp(2rem, 2.5rem, 3rem);
+  }
+
+  .attachment-grid {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    label {
+      border-radius: 5px;
+      cursor: pointer;
+      transition: border 0.3s, transform 0.3s;
+      display: inline-block;
+      input[type="radio"] {
+        display: none;
+
+        &:checked + img {
+          border: 3px solid rgba(0, 130, 206, 0.75);
+          transform: scale(1.05);
+          outline-width: 1px;
+          outline-offset: 0;
+          outline-color: rgba(0, 130, 206, 0.75);
+          outline-style: solid;
+          animation: animateOutline 1.5s ease-in-out;
+        }
+      }
+
+      &:has(img) img {
+        width: 75px;
+        height: 75px;
+      }
+    }
+  }
+}
+
+@keyframes animateOutline {
+  0% {
+    outline-width: 1px;
+    outline-offset: 0;
+    outline-color: rgba(0, 130, 206, 0);
+  }
+
+  10% {
+    outline-color: rgba(0, 130, 206, 0.75);
+  }
+
+  50% {
+    outline-width: 7px;
+    outline-offset: 4px;
+    outline-color: rgba(0, 130, 206, 0);
+  }
+
+  100% {
+    outline-width: 7px;
+    outline-offset: 4px;
+    outline-color: rgba(102, 102, 102, 0);
+  }
+}
+
+.main-area {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-bottom: 1rem;
+
+  .button-group {
+    button {
+      margin: 0.5rem 0.5rem 0 0;
+    }
+  }
+
+  @media screen and (max-width: 300px) {
+    .button-group {
+      button {
+        font-size: 1rem;
+        width: fit-content;
+        padding: 10px;
+      }
+    }
+  }
+}
+
+.right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 5px;
+
+  .bullet-container {
+    background-image: linear-gradient(360deg, $teal_color 10%, $darken-white);
+    height: 85vh;
+    width: max(32vh, 20vw);
+    p {
+      text-align: center;
+    }
+
+    @media screen and (max-width: 300) {
+      .bullet-container {
+        margin-top: 5rem;
+      }
+    }
+
+    #bullet-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+  }
+
+  .pros-cons {
+    width: max(25rem, 25vw);
+    h2 {
+      font-size: 2rem;
+      text-decoration: underline;
+      padding-bottom: 15px;
+      text-align: center;
+    }
+    p {
+      text-align: center;
+    }
+  }
+  @media screen and (max-width: 420px) {
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .pros-cons {
+      width: 200px;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
+}

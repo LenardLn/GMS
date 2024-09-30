@@ -1,0 +1,44 @@
+.support-area {
+  margin: 2rem auto;
+  display: grid;
+  place-items: center;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(1, 1, 1, 0.1);
+  padding: 2rem 2rem 0 2rem;
+  width: fit-content;
+  border-radius: 10%;
+}
+.support-area header {
+  text-align: center;
+  color: black;
+}
+.support-area a {
+  font-size: 1.5rem;
+  transition: 0.3s ease-in;
+}
+.support-area a:hover {
+  cursor: pointer;
+  color: gold;
+}
+.support-area a .paypal-text {
+  margin: 20px auto;
+  width: fit-content;
+  border: 5px dashed #0cc0df;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+}
+.support-area a img {
+  margin-right: 10px;
+  width: 25px;
+  height: 25px;
+}
+.support-area .character-img {
+  margin: 0 auto;
+  height: 55vh;
+}
+
+/*# sourceMappingURL=supportpage.css.map */

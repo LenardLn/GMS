@@ -1,0 +1,49 @@
+#navbar {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+  list-style-type: none;
+  background-color: #0cc0df;
+  height: 50px;
+}
+@media screen and (max-width: 645px) {
+  #navbar img {
+    height: 0;
+  }
+}
+#navbar img {
+  margin-left: 0.1px;
+  height: 50px;
+}
+#navbar li:not(:first-child):hover {
+  animation: move-up-down 0.5s infinite ease-in-out;
+}
+@keyframes move-up-down {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  transition: 0.15s ease-in-out;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 420px) {
+  a {
+    font-size: 0.9rem;
+  }
+  #logo {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=navbar.css.map */

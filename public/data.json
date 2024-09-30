@@ -1,0 +1,133 @@
+{
+  "ammo": {
+    "5.56": {
+      "id": 556,
+      "family": "ammo",
+      "vrec": "0%",
+      "hrec": "0%",
+      "img": "/assets/5.56.webp"
+    },
+    "7.62": {
+      "id": 762,
+      "family": "ammo",
+      "vrec": "0%",
+      "hrec": "0%",
+      "img": "/assets/7.62.webp"
+    }
+  },
+  "muzzles": {
+    "compensator": {
+      "id": 0,
+      "family": "muzzle",
+      "vrec": "-15%",
+      "hrec": "-10%",
+      "img": "/assets/compensator.webp"
+    },
+    "flash_hider": {
+      "id": 1,
+      "family": "muzzle",
+      "vrec": "-10%",
+      "hrec": "-10%",
+      "pros": "Eliminates muzzle flash",
+      "img": "/assets/flash_hider.webp"
+    },
+    "suppressor": {
+      "id": 2,
+      "family": "muzzle",
+      "vrec": "0%",
+      "hrec": "0%",
+      "pros": ["Reduces weapon sound", "+5% hip fire accuracy"],
+      "img": "/assets/suppressor.webp"
+    },
+    "muzzle_brake": {
+      "id": 3,
+      "family": "muzzle",
+      "vrec": "-10%",
+      "hrec": "-10%",
+      "pros": "-50% Camera shake when firing",
+      "img": "/assets/muzzle_brake.webp"
+    }
+  },
+  "grips": {
+    "vertical_grip": {
+      "id": 4,
+      "family": "grip",
+      "vrec": "-15%",
+      "hrec": "0%",
+      "img": "/assets/vertical_grip.webp"
+    },
+    "angled_grip": {
+      "id": 5,
+      "family": "grip",
+      "vrec": "0%",
+      "hrec": "-25%",
+      "cons": "+10% Sway control while breathing",
+      "img": "/assets/angled_grip.webp"
+    },
+    "thumb_grip": {
+      "id": 6,
+      "family": "grip",
+      "vrec": "-10%",
+      "hrec": "0%",
+      "pros": [
+        "+20% Sway control while breathing",
+        "-10% Recoil recovery after single shot",
+        "-40% ADS speed"
+      ],
+      "img": "/assets/thumb_grip.webp"
+    },
+    "half_grip": {
+      "id": 7,
+      "family": "grip",
+      "vrec": "-8%",
+      "hrec": "-8%",
+      "pros": "-10% Recoil recovery after single shot",
+      "cons": "+10% Sway control after single shot",
+      "img": "/assets/half_grip.webp"
+    },
+    "lightweight_grip": {
+      "id": 8,
+      "family": "grip",
+      "vrec": "0%",
+      "hrec": "0%",
+      "pros": [
+        "-20% Sway control when breathing",
+        "-10% Muzzle rise control",
+        "-20% Recoil recovery after single shot",
+        "-30% Initial shot recoil"
+      ],
+      "img": "/assets/lightweight_grip.webp"
+    },
+    "laser_sight": {
+      "id": 9,
+      "family": "grip",
+      "vrec": "0%",
+      "hrec": "0%",
+      "pros": "+30% Hip fire accuracy",
+      "img": "/assets/lazer_grip.webp"
+    }
+  },
+  "stocks": {
+    "tactical_stock": {
+      "id": 10,
+      "family": "stock",
+      "vrec": "0%",
+      "pros": [
+        "-10% Sway control when breathing",
+        "-10% Muzzle rise control",
+        "-10% ADS speed",
+        "-5% Recoil recovery after single shot"
+      ],
+      "img": "/assets/tactical_stock.webp"
+    },
+    "heavy_stock": {
+      "id": 11,
+      "family": "stock",
+      "vrec": "-10%",
+      "hrec": "-10%",
+      "pros": "-5% Recoil recovery after single shot",
+      "cons": ["+10% ADS speed", "-10% Hip fire accuracy"],
+      "img": "/assets/heavy_stock.webp"
+    }
+  }
+}

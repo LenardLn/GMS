@@ -1,0 +1,126 @@
+.homepage {
+  background-image: url("/assets/bg2.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat-y;
+  min-height: calc(100vh - 50px);
+  width: 100%;
+  padding-top: 2rem;
+}
+
+.center {
+  margin: 2rem auto;
+}
+
+.intro {
+  display: grid;
+  gap: 2rem;
+  max-width: max(50vw, 50vh);
+  margin: 0 25px;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: wheat;
+  border-radius: 2%;
+  text-align: center;
+  padding: 20px;
+  margin: 2rem auto;
+}
+
+header {
+  font-size: 2.5rem;
+  color: gold;
+}
+
+p {
+  font-size: 1.5rem;
+}
+
+.grid-area {
+  padding-top: 2rem;
+  display: grid;
+  place-items: center;
+  grid-template-areas: "one";
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+.grid-area #pan {
+  background-color: transparent;
+  border: none;
+  width: 20rem;
+  height: 20rem;
+  position: absolute;
+  translate: 5px 60px;
+}
+.grid-area a {
+  font-size: 1rem;
+  color: white;
+}
+.grid-area #cover-text {
+  margin-top: 1rem;
+  grid-area: one;
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+  background-color: #0cc0df;
+  z-index: 2;
+}
+.grid-area #cover-text div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: inherit;
+  height: inherit;
+  font-size: 1.5rem;
+}
+.grid-area > img {
+  width: 100px;
+  height: 100px;
+  grid-area: one;
+  border: 5px solid #0cc0df;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.grid-area > * {
+  transition: transform 0.3s ease-in-out;
+}
+.grid-area:hover > #s1 {
+  transform: translate(200px, -75px);
+}
+.grid-area:hover > #s2 {
+  transform: translate(150px, 150px);
+}
+.grid-area:hover > #s3 {
+  transform: translate(-150px, 150px);
+}
+.grid-area:hover > #s4 {
+  transform: translate(-200px, -75px);
+}
+
+@media screen and (max-width: 1100px) {
+  p {
+    font-size: 1rem;
+  }
+  header {
+    font-size: 1.5rem;
+  }
+  .grid-area {
+    padding-bottom: 7rem;
+    margin: 0 auto;
+  }
+  .grid-area #pan {
+    height: 240px;
+    width: 240px;
+    translate: 3.3px 49px;
+  }
+  .grid-area #cover-text {
+    width: 8rem;
+    height: 8rem;
+  }
+  .grid-area #cover-text div {
+    font-size: 0.5;
+  }
+}
+
+/*# sourceMappingURL=homepage.css.map */
