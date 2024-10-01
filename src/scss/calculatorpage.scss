@@ -22,11 +22,11 @@ button {
 }
 
 .attachment-selection {
-  margin: 2rem;
+  margin: 1rem;
   padding-bottom: 20px;
 
   h2 {
-    font-size: clamp(2rem, 2.5rem, 3rem);
+    font-size: clamp(1.5rem, 1.75rem, 2rem);
   }
 
   .attachment-grid {
@@ -90,7 +90,7 @@ button {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  padding-bottom: 1rem;
+  padding-bottom: 3.5rem;
 
   .button-group {
     button {
@@ -139,11 +139,13 @@ button {
 
   .pros-cons {
     width: max(25rem, 25vw);
+    // margin-bottom: 2rem;
     h2 {
-      font-size: 2rem;
+      font-size: 1.5rem;
       text-decoration: underline;
       padding-bottom: 15px;
       text-align: center;
+      font-weight: bold;
     }
     p {
       text-align: center;

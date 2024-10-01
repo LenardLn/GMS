@@ -19,11 +19,11 @@ button:hover {
 }
 
 .attachment-selection {
-  margin: 2rem;
+  margin: 1rem;
   padding-bottom: 20px;
 }
 .attachment-selection h2 {
-  font-size: 2.5rem;
+  font-size: 1.75rem;
 }
 .attachment-selection .attachment-grid {
   margin-top: 1rem;
@@ -78,7 +78,7 @@ button:hover {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  padding-bottom: 1rem;
+  padding-bottom: 3.5rem;
 }
 .main-area .button-group button {
   margin: 0.5rem 0.5rem 0 0;
@@ -120,10 +120,11 @@ button:hover {
   width: max(25rem, 25vw);
 }
 .right .pros-cons h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-decoration: underline;
   padding-bottom: 15px;
   text-align: center;
+  font-weight: bold;
 }
 .right .pros-cons p {
   text-align: center;
