@@ -6,7 +6,7 @@ const SupportPage = () => {
     <div className="support-area">
       <header>
         <div className="paypal-container">
-          Like this app? Buy me a coffee <br />
+          Like this app?<br />
           <a href="https://paypal.me/AskBigStend?country.x=RO&locale.x=en_US">
             <span className="paypal-text">
               <img src={paypal} alt="paypal logo" />
