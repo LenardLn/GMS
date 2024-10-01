@@ -75,7 +75,7 @@ button:hover {
   }
 }
 .main-area {
-  padding: 0.5rem 0 3rem 0;
+  padding: 2rem 0 1rem 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -83,14 +83,17 @@ button:hover {
 .main-area .button-group button {
   margin: 0.5rem 0.5rem 0 0;
 }
-@media screen and (max-width: 300px) {
+
+@media screen and (max-width: 450px) {
+  .main-area {
+    padding-bottom: 3rem;
+  }
   .main-area .button-group button {
     font-size: 1rem;
     width: fit-content;
     padding: 10px;
   }
 }
-
 .right {
   display: flex;
   justify-content: center;
