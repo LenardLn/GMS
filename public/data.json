@@ -88,8 +88,8 @@
     "lightweight_grip": {
       "id": 8,
       "family": "grip",
-      "vrec": "5%",
-      "hrec": "5%",
+      "vrec": "-5%",
+      "hrec": "-5%",
       "pros": [
         "-20% Sway control when breathing",
         "-10% Muzzle rise control",
