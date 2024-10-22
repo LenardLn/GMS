@@ -2,6 +2,8 @@ import { useContext, useRef, useState } from "react";
 import useAttachments from "../hooks/useAttachments";
 import AttachmentContext from "./AttachmentContextType";
 import React from "react";
+import resetRadioButtons from "./resetRadioButtons";
+import { calculateRecoil, generateBullets } from "./recoilUtils"; // Import recoil functions
 
 const GameGrid = () => {
   const { data, isLoading, error } = useAttachments();
@@ -21,88 +23,6 @@ const GameGrid = () => {
     { type: "grips", label: "Grips" },
     { type: "stocks", label: "Stocks" },
   ];
-
-  // Reset radio buttons
-  const resetRadioButtons = () => {
-    if (formRef.current) {
-      const inputs = formRef.current.querySelectorAll("input[type=radio]");
-      inputs.forEach((input) => {
-        (input as HTMLInputElement).checked = false;
-      });
-    }
-  };
-
-  const calculateRecoil = () => {
-    let vertrec = 0;
-    let horirec = 0;
-    let ammo = 556; // Default ammo
-
-    attachments.forEach((attachment) => {
-      if (attachment.vrec) {
-        vertrec += parseFloat(attachment.vrec);
-      }
-      if (attachment.hrec) {
-        horirec += parseFloat(attachment.hrec);
-      }
-      if (attachment.family === "ammo") {
-        ammo = attachment.id; // Set the ammo type if attachment is ammo
-      }
-    });
-
-    return { vertrec, horirec, ammo };
-  };
-
-  // Generate bullet positions based on recoil
-  const generateBullets = () => {
-    const { vertrec, horirec, ammo } = calculateRecoil();
-    const bulletCount = 20; // Number of bullets
-    const newBullets = [];
-
-    // Base recoil for ammo types
-    const ammoRecoil: Record<
-      number,
-      { vertical: number[]; horizontal: number[] }
-    > = {
-      556: { vertical: [26, 27], horizontal: [3, 4] },
-      762: { vertical: [35, 36], horizontal: [5, 6] },
-    };
-
-    const baseRecoil = ammoRecoil[ammo as 556 | 762] || {
-      vertical: [25, 26],
-      horizontal: [3, 4],
-    };
-
-    let accumulatedVertical = 0;
-    let accumulatedHorizontal = 0;
-
-    for (let i = 0; i < bulletCount; i++) {
-      // Calculate random base recoil within the range
-      const baseVertical =
-        Math.random() * (baseRecoil.vertical[1] - baseRecoil.vertical[0]) +
-        baseRecoil.vertical[0];
-      const baseHorizontal =
-        Math.random() * (baseRecoil.horizontal[1] - baseRecoil.horizontal[0]) +
-        baseRecoil.horizontal[0];
-
-      // Apply recoil reductions
-      const finalVertical = baseVertical * (1 + vertrec / 100);
-
-      // Randomly decide whether to go left (-1) or right (+1)
-      const direction = Math.random() < 0.5 ? -1 : 1;
-      const finalHorizontal = baseHorizontal * (1 + horirec / 100) * direction;
-
-      accumulatedVertical += finalVertical;
-      accumulatedHorizontal += finalHorizontal;
-
-      // Push the accumulated positions as the bullet's position
-      newBullets.push({
-        vertical: accumulatedVertical,
-        horizontal: accumulatedHorizontal,
-      });
-    }
-
-    setBullets(newBullets); // Update state with new bullet positions
-  };
 
   return (
     <div className="main-area">
@@ -137,7 +57,9 @@ const GameGrid = () => {
         <div className="attachment-selection button-group">
           <button
             onClick={() => {
-              generateBullets(); // Generate bullets based on recoil
+              const recoil = calculateRecoil(attachments); // Calculate recoil based on attachments
+              const newBullets = generateBullets(recoil); // Generate bullets based on the recoil data
+              setBullets(newBullets); // Update bullet state
             }}
           >
             Generate
@@ -146,8 +68,8 @@ const GameGrid = () => {
           <button
             onClick={() => {
               dispatch({ type: "RESET", attachments: [] });
-              resetRadioButtons();
-              setBullets([]); // Clear bullet positions when reset
+              resetRadioButtons(formRef); // Reset radio buttons
+              setBullets([]); // Clear bullet positions
             }}
           >
             Reset
@@ -165,9 +87,9 @@ const GameGrid = () => {
           <p>
             20 bullets (10m) <br />
             <span style={{ paddingRight: "10px" }}>
-              {calculateRecoil().vertrec}%V
+              {calculateRecoil(attachments).vertrec}%V
             </span>
-            <span>{calculateRecoil().horirec}%H</span>
+            <span>{calculateRecoil(attachments).horirec}%H</span>
           </p>
 
           {bullets.map((bullet, index) => (
