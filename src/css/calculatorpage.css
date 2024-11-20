@@ -20,10 +20,14 @@ button:hover {
 
 .attachment-selection {
   margin: 1rem;
-  padding-bottom: 20px;
 }
-.attachment-selection h2 {
+.attachment-selection .label-name {
   font-size: 1.75rem;
+}
+@media screen and (max-width: 1274px) {
+  .attachment-selection .label-name {
+    font-size: 1rem;
+  }
 }
 .attachment-selection .attachment-grid {
   margin-top: 1rem;
@@ -33,49 +37,54 @@ button:hover {
 }
 .attachment-selection .attachment-grid label {
   border-radius: 5px;
-  cursor: pointer;
-  transition: border 0.3s, transform 0.3s;
+  transition: transform 0.3s;
   display: inline-block;
 }
 .attachment-selection .attachment-grid label input[type=radio] {
-  display: none;
+  padding-top: 2px;
+  scale: 1.25;
+  width: fit-content;
+  border: none;
+  outline: none;
+  position: relative;
+  transition: transform 1s ease-in-out;
+  transform-style: preserve-3d;
 }
-.attachment-selection .attachment-grid label input[type=radio]:checked + img {
-  border: 3px solid rgba(0, 130, 206, 0.75);
-  transform: scale(1.05);
-  outline-width: 1px;
-  outline-offset: 0;
-  outline-color: rgba(0, 130, 206, 0.75);
-  outline-style: solid;
-  animation: animateOutline 1.5s ease-in-out;
+.attachment-selection .attachment-grid label input[type=radio]:checked {
+  animation: spin360 1s forwards;
 }
-.attachment-selection .attachment-grid label:has(img) img {
+.attachment-selection .attachment-grid .input-fields {
+  display: flex;
+  justify-content: space-between;
+  margin: 5px 5px 0 5px;
+  align-items: center;
+}
+.attachment-selection .attachment-grid .input-fields .separator {
+  font-size: 24px;
+  margin: 0 10px;
+  pointer-events: none !important;
+  display: inline-block;
+}
+.attachment-selection .attachment-grid .attachment-images {
   width: 75px;
   height: 75px;
 }
+@media screen and (max-width: 1274px) {
+  .attachment-selection .attachment-grid .attachment-images {
+    width: 55px;
+    height: 55px;
+  }
+}
 
-@keyframes animateOutline {
+@keyframes spin360 {
   0% {
-    outline-width: 1px;
-    outline-offset: 0;
-    outline-color: rgba(0, 130, 206, 0);
-  }
-  10% {
-    outline-color: rgba(0, 130, 206, 0.75);
-  }
-  50% {
-    outline-width: 7px;
-    outline-offset: 4px;
-    outline-color: rgba(0, 130, 206, 0);
+    transform: rotateY(0deg);
   }
   100% {
-    outline-width: 7px;
-    outline-offset: 4px;
-    outline-color: rgba(102, 102, 102, 0);
+    transform: rotateY(360deg);
   }
 }
 .main-area {
-  padding: 2rem 0 1rem 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -86,7 +95,7 @@ button:hover {
 
 @media screen and (max-width: 450px) {
   .main-area {
-    padding-bottom: 3rem;
+    padding-bottom: 1rem;
   }
   .main-area .button-group button {
     font-size: 1rem;
@@ -104,22 +113,32 @@ button:hover {
 .right .bullet-container {
   background-image: linear-gradient(360deg, #0cc0df 10%, #b0b0b0);
   height: 85vh;
-  width: max(32vh, 20vw);
+  width: max(36vh, 20vw);
 }
 .right .bullet-container p {
   text-align: center;
-}
-@media screen and (max-width: 300) {
-  .right .bullet-container .bullet-container {
-    margin-top: 5rem;
-  }
 }
 .right .bullet-container #bullet-bg {
   position: absolute;
   top: 0;
   left: 0;
 }
+.right .rec-stats {
+  font-size: 20px;
+}
+@media screen and (max-width: 1274px) {
+  .right .bullet-container {
+    height: 100vh;
+  }
+  .right .rec-stats {
+    font-size: 12.5px;
+  }
+  .right h2 {
+    font-size: 2rem;
+  }
+}
 .right .pros-cons {
+  padding-bottom: 4rem;
   width: max(25rem, 25vw);
 }
 .right .pros-cons h2 {
@@ -128,6 +147,7 @@ button:hover {
   padding-bottom: 15px;
   text-align: center;
   font-weight: bold;
+  padding-top: 1rem;
 }
 .right .pros-cons p {
   text-align: center;

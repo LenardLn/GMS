@@ -4,32 +4,50 @@ import AttachmentContext from "./AttachmentContextType";
 
 interface AddAttachment {
   type: "ADD";
+  loadout: "loadout1" | "loadout2";
   attachmentFamily: string;
   attachment: Attachment;
 }
 
 interface ResetAttachments {
   type: "RESET";
-  attachments: Attachment[];
+  loadout: "loadout1" | "loadout2";
 }
 
 export type AttachmentAction = AddAttachment | ResetAttachments;
 
+export interface AttachmentState {
+  loadout1: Attachment[];
+  loadout2: Attachment[];
+  [key: string]: Attachment[];
+}
+
+const initialState: AttachmentState = {
+  loadout1: [],
+  loadout2: [],
+};
+
 const attachmentReducer = (
-  attachments: Attachment[],
+  state: AttachmentState,
   action: AttachmentAction
-): Attachment[] => {
+): AttachmentState => {
   switch (action.type) {
     case "ADD": {
-      const filteredAttachments = attachments.filter(
+      const updatedLoadout = state[action.loadout].filter(
         (a) => a.family !== action.attachmentFamily
       );
-      return [action.attachment, ...filteredAttachments];
+      return {
+        ...state,
+        [action.loadout]: [action.attachment, ...updatedLoadout],
+      };
     }
     case "RESET":
-      return [];
+      return {
+        ...state,
+        [action.loadout]: [],
+      };
     default:
-      return attachments;
+      return state;
   }
 };
 
@@ -38,10 +56,10 @@ interface Props {
 }
 
 function AttachmentProvider({ children }: Props) {
-  const [attachments, dispatch] = useReducer(attachmentReducer, []);
+  const [attachments, dispatch] = useReducer(attachmentReducer, initialState);
 
   return (
-    <AttachmentContext.Provider value={{ attachments, dispatch: dispatch }}>
+    <AttachmentContext.Provider value={{ attachments, dispatch }}>
       {children}
     </AttachmentContext.Provider>
   );

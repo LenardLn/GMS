@@ -4,10 +4,6 @@
   box-sizing: border-box;
 }
 
-html {
-  color-scheme: dark light;
-}
-
 body {
   min-height: 100vh;
   background-color: #b0b0b0;

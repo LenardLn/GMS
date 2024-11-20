@@ -3,8 +3,13 @@ import { Attachment } from "../entities/Attachment";
 import { AttachmentAction } from "./AttachmentProvider";
 import React from "react";
 
+export interface AttachmentState {
+  loadout1: Attachment[];
+  loadout2: Attachment[];
+}
+
 export interface AttachmentContextType {
-  attachments: Attachment[];
+  attachments: AttachmentState;
   dispatch: Dispatch<AttachmentAction>;
 }
 
