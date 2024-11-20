@@ -34,7 +34,8 @@ button {
   }
 
   .attachment-grid {
-    margin-top: 1rem;
+    box-shadow: 0 -1px 0 0 rgba($color: $teal_color, $alpha: 1);
+    margin: 7px 0 1.5em 0;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
