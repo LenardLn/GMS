@@ -189,9 +189,13 @@ const GameGrid = () => {
           <div className="pros-cons">
             <h2> Loadout 1 Stats</h2>
             <div>
-              {getProsAndCons("loadout1").pros.map((pro, index) => (
-                <p key={index}>{pro}</p>
-              ))}
+              {getProsAndCons("loadout1").pros.length > 0 ? (
+                getProsAndCons("loadout1").pros.map((pro, index) => (
+                  <p key={index}>{pro}</p>
+                ))
+              ) : (
+                <p>No stats to show</p>
+              )}
             </div>
             <div>
               {getProsAndCons("loadout1").cons.map((con, index) => (
@@ -203,9 +207,13 @@ const GameGrid = () => {
           <div className="pros-cons">
             <h2> Loadout 2 Stats</h2>
             <div>
-              {getProsAndCons("loadout2").pros.map((pro, index) => (
-                <p key={index}>{pro}</p>
-              ))}
+              {getProsAndCons("loadout2").pros.length > 0 ? (
+                getProsAndCons("loadout2").pros.map((pro, index) => (
+                  <p key={index}>{pro}</p>
+                ))
+              ) : (
+                <p>No stats to show</p>
+              )}
             </div>
             <div>
               {getProsAndCons("loadout2").cons.map((con, index) => (
