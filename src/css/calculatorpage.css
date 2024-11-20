@@ -50,6 +50,9 @@ button:hover {
   transition: transform 1s ease-in-out;
   transform-style: preserve-3d;
 }
+.attachment-selection .attachment-grid label input[type=radio]:hover {
+  cursor: pointer;
+}
 .attachment-selection .attachment-grid label input[type=radio]:checked {
   animation: spin360 1s forwards;
 }
