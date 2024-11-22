@@ -33,11 +33,12 @@ button:hover {
   }
 }
 .attachment-selection .attachment-grid {
-  border-top: 2px dashed #0cc0df;
+  border-top: 1px solid #0cc0df;
   margin: 7px 0 1.5em 0;
+  padding-top: 0.35rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 30px;
 }
 .attachment-selection .attachment-grid label {
   border-radius: 5px;
@@ -45,9 +46,10 @@ button:hover {
   display: inline-block;
 }
 .attachment-selection .attachment-grid label input[type=radio] {
+  color-scheme: dark light;
   display: hidden;
   padding-top: 2px;
-  scale: 1.25;
+  scale: 1.15;
   width: fit-content;
   position: relative;
   transition: transform 1s ease-in-out;
@@ -68,17 +70,19 @@ button:hover {
 .attachment-selection .attachment-grid .input-fields .separator {
   font-size: 24px;
   margin: 0 10px;
-  pointer-events: none !important;
   display: inline-block;
+  color: #0cc0df;
 }
 .attachment-selection .attachment-grid .input-fields .separator::before {
   content: "1";
   position: absolute;
   font-size: 10px;
+  color: white;
   transform: translate(-5px, 15px);
 }
 .attachment-selection .attachment-grid .input-fields .separator::after {
   content: "2";
+  color: white;
   position: absolute;
   font-size: 10px;
   transform: translate(0, 15px);
