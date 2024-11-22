@@ -43,23 +43,6 @@ const GameGrid = () => {
 
   return (
     <React.Fragment>
-      <dialog id="dialog" open>
-        <div className="dialog-spans">
-          <span id="span1">Loadout&nbsp;1</span>
-          <span>
-            <input id="red-radio" type="radio" />
-          </span>
-          <span>|</span>
-          <span>
-            <input id="teal-radio" type="radio" />
-          </span>
-          <span id="span2">Loadout 2</span>
-        </div>
-        <form method="dialog">
-          <br />
-          <button>OK</button>
-        </form>
-      </dialog>
       <div className="main-area">
         <section className="left">
           <form
@@ -209,9 +192,9 @@ const GameGrid = () => {
             ))}
           </div>
 
-          <div>
+          <div className="pros-cons-container">
             <div className="pros-cons">
-              <h2> Loadout 1 Stats</h2>
+              <h2> Loadout 1</h2>
               <div>
                 {getProsAndCons("loadout1").pros.length > 0 ? (
                   getProsAndCons("loadout1").pros.map((pro, index) => (
@@ -229,7 +212,7 @@ const GameGrid = () => {
             </div>
 
             <div className="pros-cons">
-              <h2> Loadout 2 Stats</h2>
+              <h2> Loadout 2</h2>
               <div>
                 {getProsAndCons("loadout2").pros.length > 0 ? (
                   getProsAndCons("loadout2").pros.map((pro, index) => (

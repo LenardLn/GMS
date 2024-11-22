@@ -130,95 +130,6 @@ button {
   }
 }
 
-#dialog {
-  background-color: black;
-  border-radius: 15px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: 20px;
-  border: none;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  z-index: 2;
-
-  form {
-    display: flex;
-    justify-content: center;
-  }
-}
-
-#dialog[open] ~ .main-area {
-  filter: blur(7px);
-}
-
-.dialog-spans {
-  padding: 1rem;
-  display: flex;
-  justify-content: space-evenly;
-  gap: 10px;
-
-  #red-radio {
-    outline: 2px solid rgba($color: red, $alpha: 1);
-  }
-
-  #teal-radio {
-    outline: 2px solid rgba($color: $teal_color, $alpha: 1) !important;
-    outline-offset: -1.5px;
-  }
-
-  #span1 {
-    color: red;
-    font-weight: bold;
-  }
-
-  #span2 {
-    color: rgba($color: $teal_color, $alpha: 1);
-    font-weight: bold;
-  }
-
-  #span1::after {
-    content: "-->";
-    color: red;
-    display: inline-block;
-    animation: bounceRightToLeft 2s ease-in-out infinite;
-  }
-
-  #span2::before {
-    color: $teal_color;
-    content: "<--";
-    display: inline-block;
-    animation: bounceLeftToRight 2s ease-in-out infinite;
-  }
-
-  @media screen and (max-width: 722px) {
-    #span2::before,
-    #span1::after {
-      content: none;
-    }
-  }
-
-  @keyframes bounceRightToLeft {
-    0%,
-    100% {
-      transform: translateX(5px);
-    }
-    50% {
-      transform: translateX(0);
-    }
-  }
-
-  @keyframes bounceLeftToRight {
-    0%,
-    100% {
-      transform: translateX(-5px);
-    }
-    50% {
-      transform: translateX(0);
-    }
-  }
-}
-
 @media screen and (max-width: 450px) {
   .main-area {
     padding-bottom: 1rem;
@@ -242,12 +153,6 @@ button {
   .bullet-container {
     background-image: linear-gradient(360deg, $teal_color 10%, $darken-white);
     border-radius: 25px;
-    // background: linear-gradient(
-    //   90deg,
-    //   rgba(255, 0, 0, 0.55) 35%,
-    //   transparent 60%,
-    //   rgba($color: $teal_color, $alpha: 0.55)
-    // );
     height: 85vh;
     width: max(36vh, 20vw);
     p {
@@ -273,7 +178,7 @@ button {
     font-size: 20px;
   }
 
-  @media screen and (max-width: 1274px) {
+  @media screen and (max-width: 1314px) {
     .bullet-container {
       height: 100vh;
     }
@@ -287,7 +192,7 @@ button {
   }
 
   .pros-cons {
-    padding-bottom: 4rem;
+    padding: 0 0.5rem 4rem 0.5rem;
     width: max(25rem, 25vw);
     h2 {
       font-size: 1.5rem;
@@ -300,18 +205,37 @@ button {
     p {
       text-align: center;
     }
+
+    &:first-child {
+      box-shadow: 2px 0 3px rgba($color: $teal_color, $alpha: 1);
+    }
+
+    &:last-child {
+      box-shadow: -5px 0 3px rgba($color: $teal_color, $alpha: 1);
+    }
   }
-  @media screen and (max-width: 420px) {
-    h2 {
-      font-size: 1.5rem;
+
+  @media screen and (max-width: 732px) {
+    .pros-cons-container {
+      display: flex;
+      width: 22rem;
+      justify-content: space-between;
+    }
+
+    .pros-cons > * {
+      padding: 2px;
+    }
+
+    .pros-cons h2 {
+      font-size: 1.2rem;
     }
 
     .pros-cons {
       width: 200px;
     }
 
-    p {
-      font-size: 1rem;
+    .pros-cons p {
+      font-size: 14px;
     }
   }
 }
