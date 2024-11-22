@@ -42,6 +42,7 @@ button {
   }
 
   .attachment-grid {
+    color: transparent;
     border-top: 1px solid rgba($color: $teal_color, $alpha: 1);
     margin: 7px 0 1.5em 0;
     padding-top: 0.35rem;
@@ -56,6 +57,7 @@ button {
 
       input[type="radio"] {
         color-scheme: dark light;
+        -webkib-color-scheme: dark light;
         display: hidden;
         padding-top: 2px;
         scale: 1.15;

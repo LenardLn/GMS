@@ -38,6 +38,7 @@ button:hover {
   }
 }
 .attachment-selection .attachment-grid {
+  color: transparent;
   border-top: 1px solid #0cc0df;
   margin: 7px 0 1.5em 0;
   padding-top: 0.35rem;
@@ -52,6 +53,7 @@ button:hover {
 }
 .attachment-selection .attachment-grid label input[type=radio] {
   color-scheme: dark light;
+  -webkib-color-scheme: dark light;
   display: hidden;
   padding-top: 2px;
   scale: 1.15;
