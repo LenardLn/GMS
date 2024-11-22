@@ -205,21 +205,20 @@ button {
     p {
       text-align: center;
     }
-
-    &:first-child {
-      box-shadow: 2px 0 3px rgba($color: $teal_color, $alpha: 1);
-    }
-
-    &:last-child {
-      box-shadow: -5px 0 3px rgba($color: $teal_color, $alpha: 1);
-    }
   }
 
   @media screen and (max-width: 732px) {
     .pros-cons-container {
       display: flex;
-      width: 22rem;
+      width: 20rem;
       justify-content: space-between;
+    }
+
+    .keyline-pros-cons {
+      border-right: 2px solid rgba($color: $teal_color, $alpha: 1);
+      transform: translate(-2px, 0);
+      // position: absolute;
+      // top: 50%;
     }
 
     .pros-cons > * {

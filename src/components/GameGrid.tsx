@@ -211,6 +211,8 @@ const GameGrid = () => {
               </div>
             </div>
 
+            <div className="keyline-pros-cons"></div>
+
             <div className="pros-cons">
               <h2> Loadout 2</h2>
               <div>

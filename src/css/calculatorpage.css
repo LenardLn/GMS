@@ -173,17 +173,15 @@ button:hover {
 .right .pros-cons p {
   text-align: center;
 }
-.right .pros-cons:first-child {
-  box-shadow: 2px 0 3px #0cc0df;
-}
-.right .pros-cons:last-child {
-  box-shadow: -5px 0 3px #0cc0df;
-}
 @media screen and (max-width: 732px) {
   .right .pros-cons-container {
     display: flex;
-    width: 22rem;
+    width: 20rem;
     justify-content: space-between;
+  }
+  .right .keyline-pros-cons {
+    border-right: 2px solid #0cc0df;
+    transform: translate(-2px, 0);
   }
   .right .pros-cons > * {
     padding: 2px;
