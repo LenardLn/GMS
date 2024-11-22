@@ -5,8 +5,13 @@ span {
   color: white;
 }
 
+html {
+  color-scheme: dark light;
+}
+
 button {
   background-color: #0cc0df;
+  color: black;
   border: none;
   font-size: 1.25rem;
   padding: 1rem 5px;
@@ -38,7 +43,7 @@ button:hover {
   padding-top: 0.35rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: 25px;
 }
 .attachment-selection .attachment-grid label {
   border-radius: 5px;
