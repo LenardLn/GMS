@@ -4,6 +4,7 @@ import AttachmentContext from "./AttachmentContextType";
 import resetRadioButtons from "./resetRadioButtons";
 import { calculateRecoil, generateBullets } from "./recoilUtils";
 import { Attachment } from "../entities/Attachment";
+import React from "react";
 
 const GameGrid = () => {
   const { data, isLoading, error } = useAttachments();
@@ -41,189 +42,213 @@ const GameGrid = () => {
   };
 
   return (
-    <div className="main-area">
-      <section className="left">
-        <form
-          style={{ marginBottom: "10px" }}
-          ref={formRef}
-          onSubmit={(e) => e?.preventDefault()}
-        >
-          {attachmentTypes.map(({ type, label }, index) => (
-            <section className="attachment-selection" key={index}>
-              <h2 className="label-name">{label}</h2>
-              <div className="attachment-grid">
-                {data?.[type as keyof typeof data] &&
-                  Object.values(data[type as keyof typeof data]!).map((res) => (
-                    <div key={res.id}>
-                      <img
-                        className="attachment-images"
-                        src={res.img}
-                        alt={label.toLowerCase()}
-                      />
-                      <div className="input-fields">
-                        <label>
-                          <input
-                            onClick={() =>
-                              dispatch({
-                                type: "ADD",
-                                loadout: "loadout1",
-                                attachmentFamily: res.family,
-                                attachment: { ...res },
-                              })
-                            }
-                            type="radio"
-                            name={`${type}-loadout1`}
-                            value={res.id}
-                          />
-                        </label>
-
-                        <span className="separator">|</span>
-
-                        <label key={res.id}>
-                          <input
-                            onClick={() =>
-                              dispatch({
-                                type: "ADD",
-                                loadout: "loadout2",
-                                attachmentFamily: res.family,
-                                attachment: { ...res },
-                              })
-                            }
-                            type="radio"
-                            name={`${type}-loadout2`}
-                            value={res.id}
-                          />
-                        </label>
-                      </div>
-                    </div>
-                  ))}
-              </div>
-            </section>
-          ))}
+    <React.Fragment>
+      <dialog id="dialog" open>
+        <div className="dialog-spans">
+          <span id="span1">Loadout&nbsp;1</span>
+          <span>
+            <input id="red-radio" type="radio" />
+          </span>
+          <span>|</span>
+          <span>
+            <input id="teal-radio" type="radio" />
+          </span>
+          <span id="span2">Loadout 2</span>
+        </div>
+        <form method="dialog">
+          <br />
+          <button>OK</button>
         </form>
-        <div className="attachment-selection button-group">
-          <button
-            onClick={() => {
-              dispatch({ type: "RESET", loadout: "loadout1" });
-              resetRadioButtons(formRef, "loadout1");
-              setBullets1([]);
-            }}
+      </dialog>
+      <div className="main-area">
+        <section className="left">
+          <form
+            style={{ marginBottom: "10px" }}
+            ref={formRef}
+            onSubmit={(e) => e?.preventDefault()}
           >
-            &#8635; Loadout 1
-          </button>
-          <button
-            onClick={() => {
-              dispatch({ type: "RESET", loadout: "loadout2" });
-              resetRadioButtons(formRef, "loadout2");
-              setBullets2([]);
-            }}
-          >
-            &#8635; Loadout 2
-          </button>
-          <button
-            onClick={() => {
-              const recoil1 = calculateRecoil(attachments.loadout1);
-              const recoil2 = calculateRecoil(attachments.loadout2);
-              const newBullets1 = generateBullets(recoil1);
-              const newBullets2 = generateBullets(recoil2);
-              setBullets1(newBullets1);
-              setBullets2(newBullets2);
-            }}
-          >
-            Generate Loadouts
-          </button>
-        </div>
-      </section>
+            {attachmentTypes.map(({ type, label }, index) => (
+              <section className="attachment-selection" key={index}>
+                <h2 className="label-name">{label}</h2>
+                <div className="attachment-grid">
+                  {data?.[type as keyof typeof data] &&
+                    Object.values(data[type as keyof typeof data]!).map(
+                      (res) => (
+                        <div key={res.id}>
+                          <img
+                            className="attachment-images"
+                            src={res.img}
+                            alt={label.toLowerCase()}
+                          />
+                          <div className="input-fields">
+                            <label>
+                              <input
+                                className="louadout1"
+                                onClick={() =>
+                                  dispatch({
+                                    type: "ADD",
+                                    loadout: "loadout1",
+                                    attachmentFamily: res.family,
+                                    attachment: { ...res },
+                                  })
+                                }
+                                type="radio"
+                                name={`${type}-loadout1`}
+                                value={res.id}
+                              />
+                            </label>
 
-      <section className="right">
-        <div
-          className="attachment-selection bullet-container"
-          style={{
-            position: "relative",
-          }}
-        >
-          <p className="rec-stats">
-            20 bullets (10m) <br /> <br />
-            <span style={{ paddingRight: "10px" }}>
-              {calculateRecoil(attachments.loadout1).vertrec}%V
-            </span>
-            <span>{calculateRecoil(attachments.loadout1).horirec}%H</span>
-            <span style={{ paddingRight: "10px", marginLeft: "30px" }}>
-              {calculateRecoil(attachments.loadout2).vertrec}%V
-            </span>
-            <span>{calculateRecoil(attachments.loadout2).horirec}%H</span>
-          </p>
-          {bullets1.map((bullet, index) => (
-            <img
-              src="/assets/bullethole.webp"
-              key={index}
-              style={{
-                position: "absolute",
-                left: `calc(35% + ${bullet.horizontal}px)`,
-                top: `calc(100% - ${bullet.vertical}px)`,
-                width: "12px",
-                height: "12px",
-                backgroundColor: "magenta",
-                borderRadius: "50%",
-              }}
-            />
-          ))}
-          {bullets2.map((bullet, index) => (
-            <img
-              src="/assets/bullethole.webp"
-              key={index}
-              style={{
-                position: "absolute",
-                left: `calc(65% + ${bullet.horizontal}px)`,
-                top: `calc(101% - ${bullet.vertical}px)`,
-                width: "12px",
-                height: "12px",
-                backgroundColor: "purple",
-                borderRadius: "50%",
-              }}
-            />
-          ))}
-        </div>
+                            <span className="separator">|</span>
 
-        <div>
-          <div className="pros-cons">
-            <h2> Loadout 1 Stats</h2>
-            <div>
-              {getProsAndCons("loadout1").pros.length > 0 ? (
-                getProsAndCons("loadout1").pros.map((pro, index) => (
-                  <p key={index}>{pro}</p>
-                ))
-              ) : (
-                <p>No stats to show</p>
-              )}
-            </div>
-            <div>
-              {getProsAndCons("loadout1").cons.map((con, index) => (
-                <p key={index}>{con}</p>
-              ))}
-            </div>
+                            <label key={res.id}>
+                              <input
+                                className="louadout2"
+                                onClick={() =>
+                                  dispatch({
+                                    type: "ADD",
+                                    loadout: "loadout2",
+                                    attachmentFamily: res.family,
+                                    attachment: { ...res },
+                                  })
+                                }
+                                type="radio"
+                                name={`${type}-loadout2`}
+                                value={res.id}
+                              />
+                            </label>
+                          </div>
+                        </div>
+                      )
+                    )}
+                </div>
+              </section>
+            ))}
+          </form>
+          <div className="attachment-selection button-group">
+            <button
+              onClick={() => {
+                dispatch({ type: "RESET", loadout: "loadout1" });
+                resetRadioButtons(formRef, "loadout1");
+                setBullets1([]);
+              }}
+            >
+              &#8635; Loadout 1
+            </button>
+            <button
+              onClick={() => {
+                dispatch({ type: "RESET", loadout: "loadout2" });
+                resetRadioButtons(formRef, "loadout2");
+                setBullets2([]);
+              }}
+            >
+              &#8635; Loadout 2
+            </button>
+            <button
+              onClick={() => {
+                const recoil1 = calculateRecoil(attachments.loadout1);
+                const recoil2 = calculateRecoil(attachments.loadout2);
+                const newBullets1 = generateBullets(recoil1);
+                const newBullets2 = generateBullets(recoil2);
+                setBullets1(newBullets1);
+                setBullets2(newBullets2);
+              }}
+            >
+              Generate Loadouts
+            </button>
+          </div>
+        </section>
+
+        <section className="right">
+          <div
+            className="attachment-selection bullet-container"
+            style={{
+              position: "relative",
+            }}
+          >
+            <p className="rec-stats">
+              20 bullets (10m) <br /> <br />
+              <span style={{ paddingRight: "10px" }}>
+                {calculateRecoil(attachments.loadout1).vertrec}%V
+              </span>
+              <span>{calculateRecoil(attachments.loadout1).horirec}%H</span>
+              <span style={{ paddingRight: "10px", marginLeft: "30px" }}>
+                {calculateRecoil(attachments.loadout2).vertrec}%V
+              </span>
+              <span>{calculateRecoil(attachments.loadout2).horirec}%H</span>
+            </p>
+            {bullets1.map((bullet, index) => (
+              <img
+                src="/assets/bullethole.webp"
+                key={index}
+                style={{
+                  position: "absolute",
+                  left: `calc(35% + ${bullet.horizontal}px)`,
+                  top: `calc(100% - ${bullet.vertical}px)`,
+                  width: "12px",
+                  height: "12px",
+                  backgroundColor: "teal",
+                  borderRadius: "50%",
+                }}
+              />
+            ))}
+            <div className="keyline-horizontal"></div>
+            {bullets2.map((bullet, index) => (
+              <img
+                src="/assets/bullethole.webp"
+                key={index}
+                style={{
+                  position: "absolute",
+                  left: `calc(65% + ${bullet.horizontal}px)`,
+                  top: `calc(100% - ${bullet.vertical}px)`,
+                  width: "12px",
+                  height: "12px",
+                  backgroundColor: "red",
+                  borderRadius: "50%",
+                }}
+              />
+            ))}
           </div>
 
-          <div className="pros-cons">
-            <h2> Loadout 2 Stats</h2>
-            <div>
-              {getProsAndCons("loadout2").pros.length > 0 ? (
-                getProsAndCons("loadout2").pros.map((pro, index) => (
-                  <p key={index}>{pro}</p>
-                ))
-              ) : (
-                <p>No stats to show</p>
-              )}
+          <div>
+            <div className="pros-cons">
+              <h2> Loadout 1 Stats</h2>
+              <div>
+                {getProsAndCons("loadout1").pros.length > 0 ? (
+                  getProsAndCons("loadout1").pros.map((pro, index) => (
+                    <p key={index}>{pro}</p>
+                  ))
+                ) : (
+                  <p>No stats to show</p>
+                )}
+              </div>
+              <div>
+                {getProsAndCons("loadout1").cons.map((con, index) => (
+                  <p key={index}>{con}</p>
+                ))}
+              </div>
             </div>
-            <div>
-              {getProsAndCons("loadout2").cons.map((con, index) => (
-                <p key={index}>{con}</p>
-              ))}
+
+            <div className="pros-cons">
+              <h2> Loadout 2 Stats</h2>
+              <div>
+                {getProsAndCons("loadout2").pros.length > 0 ? (
+                  getProsAndCons("loadout2").pros.map((pro, index) => (
+                    <p key={index}>{pro}</p>
+                  ))
+                ) : (
+                  <p>No stats to show</p>
+                )}
+              </div>
+              <div>
+                {getProsAndCons("loadout2").cons.map((con, index) => (
+                  <p key={index}>{con}</p>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </React.Fragment>
   );
 };
 
