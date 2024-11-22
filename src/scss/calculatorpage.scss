@@ -1,5 +1,9 @@
 @import "../scss/preset.scss";
 
+html {
+  color-scheme: dark light;
+}
+
 button {
   background-color: $teal_color;
   border: none;
@@ -153,7 +157,7 @@ button {
   .bullet-container {
     background-image: linear-gradient(360deg, $teal_color 10%, $darken-white);
     border-radius: 25px;
-    height: 85vh;
+    height: 87vh;
     width: max(36vh, 20vw);
     p {
       text-align: center;

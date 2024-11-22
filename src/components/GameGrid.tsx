@@ -165,7 +165,7 @@ const GameGrid = () => {
                 key={index}
                 style={{
                   position: "absolute",
-                  left: `calc(35% + ${bullet.horizontal}px)`,
+                  left: `calc(30% + ${bullet.horizontal}px)`,
                   top: `calc(100% - ${bullet.vertical}px)`,
                   width: "12px",
                   height: "12px",
@@ -181,7 +181,7 @@ const GameGrid = () => {
                 key={index}
                 style={{
                   position: "absolute",
-                  left: `calc(65% + ${bullet.horizontal}px)`,
+                  left: `calc(70% + ${bullet.horizontal}px)`,
                   top: `calc(100% - ${bullet.vertical}px)`,
                   width: "12px",
                   height: "12px",
