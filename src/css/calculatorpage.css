@@ -1,5 +1,8 @@
-html {
-  color-scheme: dark light;
+p,
+h1,
+h2,
+span {
+  color: white;
 }
 
 button {

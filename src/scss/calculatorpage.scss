@@ -1,7 +1,10 @@
 @import "../scss/preset.scss";
 
-html {
-  color-scheme: dark light;
+p,
+h1,
+h2,
+span {
+  color: white;
 }
 
 button {
@@ -95,12 +98,6 @@ button {
       border-radius: 50%;
       width: 75px;
       height: 75px;
-      // background: linear-gradient(
-      //   90deg,
-      //   rgba(255, 0, 0, 0.55) 25%,
-      //   transparent 50%,
-      //   rgba($color: $teal_color, $alpha: 0.55)
-      // );
     }
 
     @media screen and (max-width: 1274px) {
