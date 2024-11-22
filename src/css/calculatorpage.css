@@ -136,7 +136,7 @@ button:hover {
   height: 80%;
   border-left: 4px solid #b0b0b0;
   position: absolute;
-  top: 22.5%;
+  top: 20%;
   right: 50%;
 }
 .right .bullet-container #bullet-bg {
@@ -149,7 +149,8 @@ button:hover {
 }
 @media screen and (max-width: 1314px) {
   .right .bullet-container {
-    height: 100vh;
+    height: 775px;
+    width: 300px;
   }
   .right .rec-stats {
     font-size: 12.5px;

@@ -163,7 +163,7 @@ button {
       height: 80%;
       border-left: 4px solid $darken-white;
       position: absolute;
-      top: 22.5%;
+      top: 20%;
       right: 50%;
     }
 
@@ -180,7 +180,8 @@ button {
 
   @media screen and (max-width: 1314px) {
     .bullet-container {
-      height: 100vh;
+      height: 775px;
+      width: 300px;
     }
     .rec-stats {
       font-size: 12.5px;
@@ -217,8 +218,6 @@ button {
     .keyline-pros-cons {
       border-right: 2px solid rgba($color: $teal_color, $alpha: 1);
       transform: translate(-2px, 0);
-      // position: absolute;
-      // top: 50%;
     }
 
     .pros-cons > * {
