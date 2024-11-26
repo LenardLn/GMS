@@ -94,7 +94,8 @@
         "-20% Sway control when breathing",
         "-10% Muzzle rise control",
         "-20% Recoil recovery after single shot",
-        "-30% Initial shot recoil"
+        "-30% Initial shot recoil",
+        "(Passive) -5% Vertical & Horizontal"
       ],
       "img": "/assets/lightweight_grip.webp"
     },
