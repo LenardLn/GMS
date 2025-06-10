@@ -10,10 +10,9 @@ const ErrorPage = () => {
       <div style={{ margin: "2rem" }}>
         <h1 style={{ fontSize: "3rem" }}>Oops...</h1>
         <p>
-          {" "}
           {isRouteErrorResponse(error)
             ? "This page does not exist."
-            : "An unexpected error occured"}{" "}
+            : "An unexpected error occured"}
         </p>
       </div>
     </>

@@ -42,7 +42,7 @@
     "muzzle_brake": {
       "id": 3,
       "family": "muzzle",
-      "vrec": "-8%",
+      "vrec": "-10%",
       "hrec": "-8%",
       "pros": "-35% Camera shake when firing",
       "img": "/assets/muzzle_brake.webp"
